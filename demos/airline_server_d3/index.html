@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Histogram of Flight Data Using d3</title>
+    <link rel="icon" href="./assets/favicon.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+
+  <body>
+    <h2>Distribution of Airline Arrival Delays Using d3</h2>
+
+    <div id="controls">
+      <div class="control">
+        <label for="select_airline">Select an airline</label>
+        <select name="select_airline" id="select_airline">
+          <option selected value="AA">AA</option>
+          <option value="AS">AS</option>
+          <option value="B6">B6</option>
+          <option value="DL">DL</option>
+          <option value="EV">EV</option>
+          <option value="F9">F9</option>
+          <option value="FL">FL</option>
+          <option value="HA">HA</option>
+          <option value="MQ">MQ</option>
+          <option value="VX">VX</option>
+          <option value="WN">WN</option>
+          <option value="UA">UA</option>
+          <option value="US">US</option>
+          <option value="OO">OO</option>
+        </select>
+      </div>
+
+      <div class="control">
+        <label for="select_chart">Select Chart</label>
+        <select name="select_chart" id="select_chart">
+          <option value="chart_1">Chart 1</option>
+          <option value="chart_2">Chart 2</option>
+        </select>
+      </div>
+
+      <div class="control">
+        <label for="x_min">Chart X Min</label>
+        <input id="x_min" name="x_min" type="number" min="-40" max="40" value="-15">
+      </div>
+
+      <div class="control">
+        <label for="x_max">Chart X Max</label>
+        <input id="x_max" name="x_max" type="number" min="-40" max="40" value="21">
+      </div>
+
+      <div class="control">
+        <label for="n_bins">Chart N Bins</label>
+        <input id="n_bins" name="n_bins" type="number" min="4" max="20" value="12">
+      </div>
+
+      <button id="update">Update</button>
+
+      <div>
+        <strong id="minmax">Min-Max Values</strong>
+      </div>
+    </div>
+
+    <div id="charts">
+      <div class="chart" id="chart_1"></div>
+      <div class="chart" id="chart_2"></div>
+    </div>
+
+    <script type="module">
+      'use strict';
+      import create_histogram from "./js/basic_histogram.js";
+
+      const set_airline = async (airline, x_min, x_max) => {
+        const esc = encodeURIComponent;  //encode to escape any spaces
+        const airline_url =  'http://127.0.0.1:8080/delay?';
+        const params = {
+          airline: airline,
+          xmin: x_min,
+          xmax: x_max
+        }
+        const query = Object.keys(params).map(k => `${esc(k)}=${esc(params[k])}`).join('&');
+        //console.log(`query string: ${airline_url + query}`)
+        try {
+          const resp = await fetch(airline_url + query, {
+              method: 'GET',
+              mode: 'cors',
+              headers: {
+                'Content-Type': 'text/plain'
+              }
+            }
+          )
+          if(resp.ok){
+            const response_text = await resp.text();
+            return Promise.resolve(response_text);
+          }else {
+            return Promise.reject(`set_airline() error. Status = ${resp.status}`);
+          }
+        }catch(err){
+          console.log(err);
+        }
+      }
+      let chart_id = 'chart_1'
+      const select_chart = document.getElementById('select_chart');
+      select_chart.addEventListener('change', ev => {
+        chart_id = ev.target.value;
+      });
+
+      let airline = 'AA';
+      const select_airline = document.getElementById('select_airline');
+      select_airline.addEventListener('change', ev => {
+        airline = ev.target.value;
+      });
+
+      let x_min = -15
+      const input_x_min = document.getElementById('x_min');
+      input_x_min.addEventListener('change', ev => {
+        x_min = +ev.target.value;
+      })
+
+      let x_max = 21
+      const input_x_max = document.getElementById('x_max');
+      input_x_max.addEventListener('change', ev => {
+        x_max = +ev.target.value;
+      })
+
+      let n_bins = 12
+      const input_n_bins = document.getElementById('n_bins');
+      input_n_bins.addEventListener('change', ev => {
+        n_bins = +ev.target.value;
+      })
+
+      const button_update = document.getElementById('update');
+      button_update.addEventListener('click', ev => {
+        set_airline(airline, x_min, x_max).then(response_text => {
+          //console.log(`Response Text: ${response_text}`);
+          const json_response = JSON.parse(response_text);
+          //console.log(`Response: ${json_response}`)
+          //console.log(`Reduced Data: ${json_response['arr_delay']}`);
+          create_histogram(
+            chart_id,
+            json_response['arr_delay'],
+            x_min,
+            x_max,
+            n_bins,
+            `${airline} Arrival Delay (minutes)`,
+            'Count').then((histo_info) => {
+              console.log(histo_info);
+          })
+          const minmax_el = document.getElementById('minmax')
+          minmax.innerText =
+              `Data Min: ${json_response['data_min']}   Data Max: ${json_response['data_max']}`
+        }).catch(err => {
+          console.log(err);
+        })
+      });
+    </script>
+  </body>
+</html>
