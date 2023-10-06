@@ -37,16 +37,16 @@ server. The list name is the web path (e.g. "/content") and the value is the ful
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{Server$new()}}
-\item \href{#method-start}{\code{Server$start()}}
-\item \href{#method-stop}{\code{Server$stop()}}
-\item \href{#method-list_servers}{\code{Server$list_servers()}}
-\item \href{#method-clone}{\code{Server$clone()}}
+\item \href{#method-NA-new}{\code{Server$new()}}
+\item \href{#method-NA-start}{\code{Server$start()}}
+\item \href{#method-NA-stop}{\code{Server$stop()}}
+\item \href{#method-NA-list_servers}{\code{Server$list_servers()}}
+\item \href{#method-unknown-clone}{\code{Server$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-NA-new"></a>}}
+\if{latex}{\out{\hypertarget{method-NA-new}{}}}
 \subsection{Method \code{new()}}{
 Defines the classes' public fields
 \subsection{Usage}{
@@ -70,8 +70,8 @@ server.}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-start"></a>}}
-\if{latex}{\out{\hypertarget{method-start}{}}}
+\if{html}{\out{<a id="method-NA-start"></a>}}
+\if{latex}{\out{\hypertarget{method-NA-start}{}}}
 \subsection{Method \code{start()}}{
 Start the server
 \subsection{Usage}{
@@ -80,8 +80,8 @@ Start the server
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-stop"></a>}}
-\if{latex}{\out{\hypertarget{method-stop}{}}}
+\if{html}{\out{<a id="method-NA-stop"></a>}}
+\if{latex}{\out{\hypertarget{method-NA-stop}{}}}
 \subsection{Method \code{stop()}}{
 Stop the server
 \subsection{Usage}{
@@ -90,8 +90,8 @@ Stop the server
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-list_servers"></a>}}
-\if{latex}{\out{\hypertarget{method-list_servers}{}}}
+\if{html}{\out{<a id="method-NA-list_servers"></a>}}
+\if{latex}{\out{\hypertarget{method-NA-list_servers}{}}}
 \subsection{Method \code{list_servers()}}{
 List the current servers
 \subsection{Usage}{
@@ -100,8 +100,8 @@ List the current servers
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-unknown-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-unknown-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

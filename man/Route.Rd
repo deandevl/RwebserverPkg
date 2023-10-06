@@ -30,13 +30,13 @@ The default MIME type is "text/plain".}
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{Route$new()}}
-\item \href{#method-clone}{\code{Route$clone()}}
+\item \href{#method-Route-new}{\code{Route$new()}}
+\item \href{#method-Route-clone}{\code{Route$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-Route-new"></a>}}
+\if{latex}{\out{\hypertarget{method-Route-new}{}}}
 \subsection{Method \code{new()}}{
 Create a Route object
 \subsection{Usage}{
@@ -59,8 +59,8 @@ A new \code{Route} object
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-Route-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-Route-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

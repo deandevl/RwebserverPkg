@@ -2,9 +2,11 @@ Package: RwebserverPkg
 Title: A simple http R server based on the httpuv package
 Version: 0.0.0.9000
 Author: Rick Dean, <deanr3@bardstown.com>
+Maintainer: Rick Dean, <deanr3@bardstown.com>
 Description: An http R server for defining routes and their associated handlers.
+Imports: R6, httpuv
 License: MIT
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.3

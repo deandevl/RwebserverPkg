@@ -29,13 +29,13 @@ respective values}
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{Request$new()}}
-\item \href{#method-clone}{\code{Request$clone()}}
+\item \href{#method-Request-new}{\code{Request$new()}}
+\item \href{#method-Request-clone}{\code{Request$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-Request-new"></a>}}
+\if{latex}{\out{\hypertarget{method-Request-new}{}}}
 \subsection{Method \code{new()}}{
 Create a Request object
 \subsection{Usage}{
@@ -69,8 +69,8 @@ A new \code{Request} object
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-Request-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-Request-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{
